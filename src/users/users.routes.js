@@ -1,9 +1,10 @@
-import { createUser, deleteUser, getUser, patchUser } from "./users.controller";
+import { createUser, deleteUser, getUserbyID, getUserbyName_pass, patchUser } from "./users.controller";
 import {Router} from 'express';
 const router = Router();
 
 // Endpoint GET /prueba
-router.get('/', getUser );
+router.get('/:number', getUserbyID );
+router.get('/:email/:pass', getUserbyName_pass );
 
 // Endpoint POST /prueba
 router.post('/', createUser );
@@ -12,6 +13,6 @@ router.post('/', createUser );
 router.patch('/', patchUser );
 
 // Endpoint DELETE /prueba
-router.delete('/', deleteUser );
+router.delete('/:id', deleteUser );
 
 export default router;
