@@ -27,8 +27,8 @@ mongoose.connect(
 app.use(cors());
 app.use(express.json());
 
-import empanadaRoutes from "./users/users.routes";
-app.use("/users", empanadaRoutes);
+import usersRoutes from "./users/users.routes";
+app.use("/users", usersRoutes);
 
 // Endpoint para 404
 app.use((req, res) => {
