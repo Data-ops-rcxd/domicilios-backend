@@ -24,8 +24,8 @@ mongoose
 // Middlewares
 app.use(cors());
 
-import usersRoutes from "./users/users.routes";
-app.use("/users", usersRoutes);
+import usersRouter from "./users/users.router";
+app.use("/users", usersRouter);
 
 // Endpoint para 404
 app.use((req, res) => {
