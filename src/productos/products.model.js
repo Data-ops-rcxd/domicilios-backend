@@ -11,5 +11,5 @@ const productSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
-
+//esto es un ejemplo
 export default mongoose.model("products", productSchema);
