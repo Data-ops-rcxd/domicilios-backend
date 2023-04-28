@@ -1,51 +1,55 @@
-import productsModel from "./products.model";
+import restaurantModel from "./restaurant.model";
 
-export async function createProduct(req, res) {
+export async function createRestaurant(req, res) {
   try {
     const product = req.body;
     req.body.isDisable = "false";
-    const document = await productsModel.create(product);
+    const document = await restaurantModel.create(product);
     res.status(201).json(document);
   } catch (err) {
     res.status(500).json(err.message);
   }
 }
 
-export async function getProduct(req, res) {
+export async function getRestaurant(req, res) {
   try {
     const id = req.params.id;
-    const document = await productsModel.findOne({ _id: id, isDisable: false });
+    const document = await restaurantModel.findOne({
+      _id: id,
+      isDisable: false,
+    });
     document ? res.status(200).json(document) : res.sendStatus(404);
   } catch (err) {
     res.status(500).json(err.message);
   }
 }
-
-export async function getproducts(req, res) {
+export async function getRestaurants(req, res) {
   try {
     const cat = req.query.category;
-    const rest = req.query.restaurant;
+    const name = req.query.name;
     const query = { isDisable: false };
-    if (rest) {
-      query.restaurant = rest;
+    if (name) {
+      query.name = name;
     }
     if (cat) {
       query.category = cat;
     }
-    const document = await productsModel.find(query);
-    document ? res.status(200).json(document) : res.sendStatus(404);
+    const document = await restaurantModel.find(query);
+    document.length > 0 ? res.status(200).json(document) : res.sendStatus(404);
   } catch (err) {
-    res.status(500).json(err.message);
+    res.status(500).json(err);
   }
 }
 
-export async function UpdateProduct(req, res) {
+export async function UpdateRestaurant(req, res) {
   try {
     const id = req.params.id;
-    const document = await productsModel.findOneAndUpdate(
+    const document = await restaurantModel.findOneAndUpdate(
       { _id: id, isDisable: false },
       req.body,
-      { runValidators: true }
+      {
+        runValidators: true,
+      }
     );
     document ? res.status(200).json("changes applied") : res.sendStatus(404);
   } catch (err) {
@@ -53,10 +57,10 @@ export async function UpdateProduct(req, res) {
   }
 }
 
-export async function DeleteProduct(req, res) {
+export async function DeleteRestaurant(req, res) {
   try {
     const id = req.params.id;
-    const document = await productsModel.findByIdAndUpdate(id, {
+    const document = await restaurantModel.findByIdAndUpdate(id, {
       isDisable: true,
     });
     document ? res.status(200).json("changes applied") : res.sendStatus(404);

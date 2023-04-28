@@ -26,9 +26,10 @@ app.use(cors());
 
 import usersRouter from "./users/users.router";
 app.use("/users", usersRouter);
-
 import productsRouter from "./productos/products.router";
 app.use("/products", productsRouter);
+import restaurantRouter from "./restaurantes/restaurant.router";
+app.use("/restaurant", restaurantRouter);
 
 // Endpoint para 404
 app.use((req, res) => {
