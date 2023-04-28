@@ -27,6 +27,9 @@ app.use(cors());
 import usersRouter from "./users/users.router";
 app.use("/users", usersRouter);
 
+import productsRouter from "./productos/products.router";
+app.use("/products", productsRouter);
+
 // Endpoint para 404
 app.use((req, res) => {
   res.status(404).json({ message: "Not found." });

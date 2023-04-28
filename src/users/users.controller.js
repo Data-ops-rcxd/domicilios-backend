@@ -36,9 +36,9 @@ export async function patchUser(req, res) {
   try {
     const id = req.params.id
     const document = await Users.findByIdAndUpdate(id , req.body , {runValidators: true})
-    res.status(201).json(document)
-  } catch (error) {
-    res.status(200).json("Error");
+    res.status(200).json("changes applied")
+  } catch (err) {
+    res.status(200).json(err.message);
   }
 }
 //"elimina", osea soft delete (working)
@@ -46,8 +46,8 @@ export async function deleteUser(req, res) {
   try {
     const id = req.params.id
     await Users.findByIdAndUpdate(id ,{isDisable: true})
-    res.status(201).json("changes applied")
-  } catch (error) {
-    res.status(200).json("Error");
+    res.status(200).json("changes applied")
+  } catch (err) {
+    res.status(200).json(err.message);
   }
 }
