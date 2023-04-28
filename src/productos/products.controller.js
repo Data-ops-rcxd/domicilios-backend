@@ -33,7 +33,7 @@ export async function getproducts(req, res) {
       query.category = cat;
     }
     const document = await productsModel.find(query);
-    document ? res.status(200).json(document) : res.sendStatus(404);
+    document.length > 0 ? res.status(200).json(document) : res.sendStatus(404);
   } catch (err) {
     res.status(500).json(err.message);
   }
