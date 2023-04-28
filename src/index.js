@@ -34,7 +34,7 @@ app.use((req, res) => {
 
 try {
   app.listen(3012);
-  console.log("Connection stablished");
+  console.log("Connection stablished.");
 } catch (error) {
   console.log(error);
 }
