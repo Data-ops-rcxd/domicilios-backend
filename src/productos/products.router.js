@@ -1,11 +1,11 @@
 
-import { DeleteProduct, UpdateProduct, createProduct, getProduct, getquantity } from './products.controller';
+import { DeleteProduct, UpdateProduct, createProduct, getProduct, getproducts } from './products.controller';
 import {Router} from 'express';
 const router = Router();
 
 // Endpoint GET /prueba
-// router.get('/:id', getProduct );
-router.get('/products', getquantity );
+router.get('/', getproducts );
+router.get('/:id', getProduct );
 
 // Endpoint POST /prueba
 router.post('/', createProduct );

@@ -21,7 +21,7 @@ export async function getProduct(req, res) {
   }
 }
 
-export async function getquantity(req, res) {
+export async function getproducts(req, res) {
   try {
     const cat = req.query.category;
     const rest = req.query.restaurant;
