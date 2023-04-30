@@ -24,13 +24,13 @@ export async function getProduct(req, res) {
 export async function getproducts(req, res) {
   try {
     const cat = req.query.category;
-    const rest = req.query.restaurant;
+    const restID = req.query.restaurantID;
     const query = { isDisable: false };
-    if (rest) {
-      query.restaurant = rest;
+    if (restID) {
+      query.restaurant = restID;
     }
     if (cat) {
-      query.category = cat;
+      query.category = {$in: cat.split(",")};
     }
     const document = await productsModel.find(query);
     document.length > 0 ? res.status(200).json(document) : res.sendStatus(404);

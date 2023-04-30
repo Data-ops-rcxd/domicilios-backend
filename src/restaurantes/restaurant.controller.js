@@ -27,15 +27,17 @@ export async function getRestaurants(req, res) {
   try {
     const cat = req.query.category;
     const name = req.query.name;
-    const query = {
-      ...(name && { name: { $regex: name, $options: "i" } }),
-      ...(cat && { cat: { $in: cat.split(",") } }),
-      isDisable: false,
-    };
+    const query = { isDisable: false };
+    if (name) {
+      query.name = {$regex: name, $options: 'i'};
+    }
+    if (cat) {
+      query.category = {$in: cat.split(",")};
+    }
     const document = await restaurantModel.find(query);
     document.length > 0 ? res.status(200).json(document) : res.sendStatus(404);
   } catch (err) {
-    res.status(500).json(err.message);
+    res.status(500).json(err);
   }
 }
 
