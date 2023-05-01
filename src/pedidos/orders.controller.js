@@ -28,6 +28,8 @@ export async function getOrders(req, res) {
   try {
     const user = req.query.userID;
     const restID = req.query.restaurantID;
+    const Date1 = req.query.Date1;
+    const Date2 = req.query.Date2;
     const query = { 
       isDisable: false,
       ...(Date1 && Date2 && {createdAt:{$gte: new Date(Date1), $lt: new Date(Date2)}})
