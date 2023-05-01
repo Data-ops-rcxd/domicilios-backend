@@ -3,17 +3,17 @@ import { DeleteProduct, UpdateProduct, createProduct, getProduct, getproducts } 
 import {Router} from 'express';
 const router = Router();
 
-// Endpoint GET /prueba
+// Endpoint GET
 router.get('/', getproducts );
 router.get('/:id', getProduct );
 
-// Endpoint POST /prueba
+// Endpoint POST
 router.post('/', createProduct );
 
-// Endpoint PATCH /prueba
+// Endpoint PATCH
 router.patch('/:id', UpdateProduct );
 
-// Endpoint DELETE /prueba
+// Endpoint DELETE
 router.delete('/:id', DeleteProduct );
 
 export default router;

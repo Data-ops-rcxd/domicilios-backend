@@ -2,17 +2,17 @@ import { createUser, deleteUser, getUserbyID, getUserbyName_pass, patchUser } fr
 import {Router} from 'express';
 const router = Router();
 
-// Endpoint GET /prueba
+// Endpoint GET
 router.get('/:number', getUserbyID );
 router.get('/:email/:pass', getUserbyName_pass );
 
-// Endpoint POST /prueba
+// Endpoint POST
 router.post('/', createUser );
 
-// Endpoint PATCH /prueba
+// Endpoint PATCH
 router.patch('/:id', patchUser );
 
-// Endpoint DELETE /prueba
+// Endpoint DELETE
 router.delete('/:id', deleteUser );
 
 export default router;

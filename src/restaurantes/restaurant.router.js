@@ -2,17 +2,17 @@ import { DeleteRestaurant, UpdateRestaurant, createRestaurant, getRestaurant, ge
 import {Router} from 'express';
 const router = Router();
 
-// Endpoint GET /prueba
+// Endpoint GET
 router.get('/',  getRestaurants);
 router.get('/:id',  getRestaurant);
 
-// Endpoint POST /prueba
+// Endpoint POST
 router.post('/',  createRestaurant);
 
-// Endpoint PATCH /prueba
+// Endpoint PATCH
 router.patch('/:id',  UpdateRestaurant);
 
-// Endpoint DELETE /prueba
+// Endpoint DELETE
 router.delete('/:id',  DeleteRestaurant);
 
 export default router;
