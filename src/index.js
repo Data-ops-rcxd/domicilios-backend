@@ -30,6 +30,8 @@ import productsRouter from "./productos/products.router";
 app.use("/products", productsRouter);
 import restaurantRouter from "./restaurantes/restaurant.router";
 app.use("/restaurant", restaurantRouter);
+import ordersrouter from "./pedidos/orders.router";
+app.use("/orders", ordersrouter);
 
 // Endpoint para 404
 app.use((req, res) => {
